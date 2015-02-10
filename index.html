@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>my-to-dos</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/lib/jquery.js"></script>
+	<script src="js/lib/underscore.js"></script>
+	<script src="js/lib/backbone.js"></script>
+	<script src="js/lib/backbone.localStorage.js"></script>
+	<script src="js/my-todos.js"></script>
+</head>
+<body>
+	<div class="todosapp">
+		<header>
+			<h1>My-Todos</h1>
+			<input type="text" id="new-todo" placeholder="添加一个新的todo">
+		</header><!-- /header -->
+		<section id="main">
+			<input type="checkbox" name="" value="完成所有的todo">
+			<ul id="todos-list">
+				
+			</ul>	
+		</section>
+		<footer>
+			<a id="clear-completed">移除已经完成todo</a>
+      		<div id="todo-count"></div>
+		</footer>
+	</div>
+	<div class="instructions">
+		double-click to edit a todos ,have a try! 
+	</div>
+	<!-- Templates -->
+
+  <script type="text/template" id="item-template">
+    <div class="view">
+      <input class="toggle" type="checkbox" <%= done ? 'checked="checked"' : '' %> />
+      <label><%- title %></label>
+      <a class="destroy"></a>
+    </div>
+    <input class="edit" type="text" value="<%- title %>" />
+  </script>
+
+  <script type="text/template" id="stats-template">
+    <% if (done) { %>
+      <a id="clear-completed">Clear <%= done %> completed <%= done == 1 ? 'item' : 'items' %></a>
+    <% } %>
+    <div class="todo-count"><b><%= remaining %></b> <%= remaining == 1 ? 'item' : 'items' %> left</div>
+  </script>
+</body>
+</html>
